@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Add new note</h3>
+    <form action="/add_note" method="post">
+
+        <textarea name="note" id="note"></textarea><br>
+        <input type="submit" value="SUBMIT">
+
+    </form>
+
+{% endblock %}

@@ -7,11 +7,25 @@
     <title>Online Notepad</title>
 </head>
 <body>
- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                {% if current_user.is_authenticated %}
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{{ url_for('add_note') }}">Add note</a>
+                    </div>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{{ url_for('all_notes') }}">All notes</a>
+                    </div>
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Log out</a>
+                    </div>
+
+                {% endif %}
+         </div>
     </nav>
 
 {% block content %}

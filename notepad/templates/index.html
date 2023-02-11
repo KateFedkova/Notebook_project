@@ -2,8 +2,19 @@
 
 {% block content %}
 
+    {% if current_user.is_authenticated %}
+        <h3>How to use this web-page</h3>
+        <ol>
+            <li>Open page "Add note"</li>
+            <li> Input information which you want into the textarea</li>
+            <li>Click SUBMIT</li>
+        </ol>
 
-<h3>Welcome to online notepad! If you wanna make notes <a href="{{ url_for('signup') }}">sign up</a>
-    or <a href="{{ url_for('login') }}">log in</a> first</h3>
+    {% else %}
+
+    <h3>Welcome to online notepad! If you wanna make notes <a href="{{ url_for('signup') }}">sign up</a>
+        or <a href="{{ url_for('login') }}">log in</a> first</h3>
+
+    {% endif %}
 
 {% endblock %}
