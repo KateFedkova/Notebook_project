@@ -8,6 +8,12 @@ from notepad import app
 def index():
     return render_template("index.html")
 
+
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+
  #
  # <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
  #            <div class="navbar-nav">

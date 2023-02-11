@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+     {% with message = get_flashed_messages() %}
+        {% if message %}
+            {{ message[0] }}. Go to <a href="{{ url_for('login') }}">login</a> page.
+        {% endif %}
+    {% endwith %}
+
+    <h3>Sign up</h3>
+    <form action="/signup" method="post">
+        <label for="username">Username</label><br>
+        <input type="text" name="username" id="username"><br>
+
+        <label for="password">Password</label><br>
+        <input type="password" name="password" id="password"><br><br>
+
+        <input type="submit" value="Sign up">
+
+    </form>
+
+{% endblock %}
