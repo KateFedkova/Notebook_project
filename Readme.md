@@ -8,7 +8,7 @@ ___
 1. Sign in or log in to make notes 
 
 2. Homepage with detailed explanation how to make notes
-   ![explanation](static/images/homepage.png)
+   ![explanation](notepad/static/images/homepage.png)
 3. You can add note and see all notes
 
 ___
