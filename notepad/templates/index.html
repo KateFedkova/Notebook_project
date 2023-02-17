@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_page.css') }}">
+    <img src="{{ url_for('static', filename='images/notebook.png') }}" id="notebook_main">
 
     {% if current_user.is_authenticated %}
+    <div class="main_page_text">
         <h3>How to use this web-page</h3>
         <ol>
             <li>Open page "Add note"</li>
-            <li> Input information which you want into the textarea</li>
+            <li>Input information which you want to add into the textarea</li>
             <li>Click SUBMIT</li>
         </ol>
+    </div>
 
     {% else %}
 
-    <h3>Welcome to online notepad! If you wanna make notes <a href="{{ url_for('signup') }}">sign up</a>
+    <h3 class="main_page_text">Welcome to online notepad! If you wanna make notes, <a href="{{ url_for('signup') }}">sign up</a>
         or <a href="{{ url_for('login') }}">log in</a> first</h3>
 
     {% endif %}

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/all_notes.css') }}">
 
-{% for post in all_posts %}
-     <span>{{ post }}</span>
-
-{% endfor %}
-
+     <div class="div_for_notes">
+          {% for post in all_posts %}
+               <p class="notes"><span class="note_text">{{ post }}</span></p>
+          {% endfor %}
+     </div>
 
 {% endblock %}

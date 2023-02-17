@@ -1,0 +1,18 @@
+#notebook_main {
+    position: relative;
+    width: 1000px;
+    height: 550px;
+    left: 100px;
+}
+
+
+.main_page_text {
+    position: absolute;
+    width: 330px;
+    top: 120px;
+    right: 260px;
+    background-color: #4AB66B;
+    font-family: 'Brush Script MT', cursive;
+    text-align: center;
+    line-height: 1.5;
+}

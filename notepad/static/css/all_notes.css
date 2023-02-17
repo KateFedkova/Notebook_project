@@ -1,0 +1,24 @@
+body {
+     background-color: #ecf0f3;
+}
+
+
+.div_for_notes {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    border: solid 3px #E4DE31;
+    padding-top: 10px;
+}
+
+
+.notes {
+    font-family: Garelina;
+    text-align: center;
+}
+
+
+.note_text {
+    padding: 5px 10px;
+    background-color: #CFCA46;
+}

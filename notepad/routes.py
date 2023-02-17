@@ -3,6 +3,7 @@ from flask_login import login_required, logout_user, login_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from notepad import app, login_manager
 from notepad.database import session, Posts, Users
+from notepad.serivce import add_obj, find_user_by_name, info_form, get_posts
 
 
 @app.route("/index")
@@ -14,29 +15,24 @@ def index():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
-        user = session.query(Users).where(Users.username == username).first()
+        username, password = info_form()
+        user = find_user_by_name(username)
         if user:
             flash("This user already exists")
-            #return redirect(url_for("login"))
+            return redirect(url_for("signup"))
 
         new_user = Users(username=username, password=generate_password_hash(password))
-        session.add(new_user)
-        session.commit()
-        session.close()
-        return redirect("login")
+        add_obj(new_user)
+        return redirect(url_for("login"))
     return render_template("signup.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username, password = info_form()
         remember = True if request.form.get("remember") else False
-
-        user = session.query(Users).where(Users.username == username).first()
+        user = find_user_by_name(username)
 
         if not user or not check_password_hash(user.password, password):
             flash("Check if you enter data correctly or sign up")
@@ -53,22 +49,20 @@ def add_note():
     if request.method == "POST":
         note = request.form["note"]
         user_id = current_user.id
-
         new_note = Posts(user_id=user_id, text=note)
-        session.add(new_note)
-        session.commit()
-        session.close()
+        add_obj(new_note)
+        return redirect(url_for("all_notes"))
 
     return render_template("add_note.html")
 
 
 @app.route("/all_notes")
+@login_required
 def all_notes():
     id = current_user.id
-    all_posts = session.query(Posts).where(Posts.user_id == id)
-    all_posts = [i.text for i in all_posts]
-
+    all_posts = get_posts(id)
     return render_template("all_notes.html", all_posts=all_posts)
+
 
 @app.route("/logout")
 def logout():

@@ -1,23 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
 
-     {% with message = get_flashed_messages() %}
-        {% if message %}
-            {{ message[0] }}. Go to <a href="{{ url_for('login') }}">login</a> page.
-        {% endif %}
-    {% endwith %}
+    <div class="form_div">
+        <div class="form">
+            <h3>Sign up</h3>
+            <form action="/signup" method="post">
+                <label for="username">Username</label><br>
+                <input type="text" name="username" id="username"><br>
 
-    <h3>Sign up</h3>
-    <form action="/signup" method="post">
-        <label for="username">Username</label><br>
-        <input type="text" name="username" id="username"><br>
+                <label for="password">Password</label><br>
+                <input type="password" name="password" id="password"><br><br>
 
-        <label for="password">Password</label><br>
-        <input type="password" name="password" id="password"><br><br>
+                 {% with message = get_flashed_messages() %}
+                    {% if message %}
+                        <span class="form_error">{{ message[0] }}</span><br>
+                    {% endif %}
+                {% endwith %}
 
-        <input type="submit" value="Sign up">
-
-    </form>
+                <input type="submit" value="Sign up">
+            </form><br>
+            <span>Already a user? <a href="{{ url_for('login') }}">LOGIN</a></span>
+        </div>
+    </div>
 
 {% endblock %}

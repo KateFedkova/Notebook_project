@@ -1,0 +1,38 @@
+body {
+    background-color: #d5eafc;
+}
+
+.add_div {
+    background-color: white;
+    width: 350px;
+    font-family: Garelina;
+    margin: auto;
+    margin-top: 70px;
+    border-radius: 12px;
+}
+
+
+.add_form {
+    padding-top: 10px;
+    padding-bottom: 13px;
+    text-align: center;
+    margin: auto;
+}
+
+
+textarea {
+    width: 300px;
+    height: 200px;
+}
+
+
+input[type=submit] {
+  width: 150px;
+  background-color: #FA5CAC;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 5px 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
